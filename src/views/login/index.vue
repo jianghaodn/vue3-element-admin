@@ -87,7 +87,7 @@ export default defineComponent({
     return {
       loginForm: {
         username: 'admin',
-        password: '111111'
+        password: 'admin123'
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
@@ -147,6 +147,8 @@ export default defineComponent({
           this.loading = true;
           store.user().login(this.loginForm)
             .then(() => {
+              console.log("登录完成");
+              
               this.$router.push({ path: this.redirect || '/', query: this.otherQuery });
               this.loading = false;
             })

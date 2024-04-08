@@ -1,5 +1,9 @@
 <template>
-  <div class="dashboard-editor-container">
+  <div class="dashboard-editor-container" style="border: 1px solid black;background-color: red;">
+    <div style="border: 1px solid black;background-color: red;">
+      这是editor
+    </div>
+    
     <div class=" clearfix">
       <pan-thumb :image="avatar" style="float: left">
         Your roles:

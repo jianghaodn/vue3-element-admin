@@ -32,8 +32,14 @@ export default defineStore({
       return new Promise((resolve, reject) => {
         apiLogin({ username: username.trim(), password: password }).then(response => {
           const { data } = response;
-          this.token = data.token;
-          setToken(data.token);
+          this.token = data.token.tokenValue;
+          console.log("登录成功");
+          console.log(data.token.tokenValue);
+         
+          
+          
+          setToken(data.token.tokenValue);
+          console.log(getToken());
           resolve();
         }).catch(error => {
           reject(error);
@@ -51,15 +57,17 @@ export default defineStore({
             reject('Verification failed, please Login again.');
           }
 
-          const { roles, name, avatar, introduction } = data;
+          const { roles, nickname, avatar, introduction } = data;
 
           // roles must be a non-empty array
-          if (!roles || roles.length <= 0) {
-            reject('getInfo: roles must be a non-null array!');
-          }
+          // if (!roles || roles.length <= 0) {
+          //   reject('getInfo: roles must be a non-null array!');
+          // }
 
-          this.roles = roles;
-          this.name = name;
+        
+          // this.roles = roles;
+          this.roles =['admin']
+          this.name = nickname;
           this.avatar = avatar;
           this.introduction = introduction;
           resolve(data);
